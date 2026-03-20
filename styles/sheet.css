@@ -1,4 +1,461 @@
-/* D&D 5e Character Sheet — styles filled in task #7 */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: serif; background: #f4f0e8; }
-.sheet { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+/* ── D&D 5e Character Sheet ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red:       #7b1a1a;
+  --red-light: #a32020;
+  --ink:       #1a1a1a;
+  --parchment: #f4edd8;
+  --parchment-dark: #e8dcc0;
+  --border:    #8b6914;
+  --border-dark: #5c420a;
+  --gold:      #c9a227;
+  --shadow:    rgba(0,0,0,0.18);
+  --font-body: 'Crimson Text', Georgia, serif;
+  --font-head: 'MedievalSharp', 'Palatino Linotype', serif;
+}
+
+body {
+  background: #2a1a0a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%232a1a0a'/%3E%3Ccircle cx='30' cy='30' r='1' fill='%23442200' opacity='0.4'/%3E%3C/svg%3E");
+  font-family: var(--font-body);
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* ── Sheet wrapper ─────────────────────────────────────────────────────────── */
+.sheet {
+  max-width: 1120px;
+  margin: 1.5rem auto;
+  background: var(--parchment);
+  border: 3px solid var(--border-dark);
+  border-radius: 4px;
+  box-shadow: 0 6px 24px var(--shadow), inset 0 0 60px rgba(139,105,20,0.08);
+  padding: 0 0 1.5rem;
+}
+
+/* ── Sheet Header ──────────────────────────────────────────────────────────── */
+.sheet-header {
+  background: var(--red);
+  color: #f4edd8;
+  padding: 0.7rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-bottom: 4px solid var(--border-dark);
+}
+
+.char-name-box {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.char-name {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+}
+
+.sheet-header label,
+.char-name-box label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+.header-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  flex: 1;
+}
+
+.hfield {
+  display: flex;
+  flex-direction: column;
+}
+
+.hfield span {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.hfield label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+/* ── Sheet Body: 3-column layout ───────────────────────────────────────────── */
+.sheet-body {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem 1.2rem 0;
+  align-items: start;
+}
+
+.col { display: flex; flex-direction: column; gap: 0.7rem; }
+
+/* ── Generic section box ───────────────────────────────────────────────────── */
+.section-box {
+  background: var(--parchment-dark);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  padding: 0.5rem 0.6rem 0.8rem;
+  position: relative;
+}
+
+.section-label {
+  display: block;
+  text-align: center;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--red);
+  font-weight: 600;
+  margin-top: 0.4rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.3rem;
+}
+
+/* ── Stat boxes ────────────────────────────────────────────────────────────── */
+.top-stats {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.stat-box {
+  background: var(--parchment-dark);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  padding: 0.3rem 0.5rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.stat-box label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.stat-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: var(--font-head);
+  color: var(--ink);
+}
+
+/* ── Ability Scores ────────────────────────────────────────────────────────── */
+.ability-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ability-box {
+  background: var(--parchment-dark);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.25rem 0.4rem 0.3rem;
+  position: relative;
+}
+
+.ability-label {
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  font-weight: 700;
+}
+
+.ability-mod {
+  font-size: 1.6rem;
+  font-family: var(--font-head);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.ability-score {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #555;
+  background: var(--parchment);
+  border: 1.5px solid var(--border);
+  border-radius: 50%;
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+}
+
+/* ── Saving Throws & Skills ────────────────────────────────────────────────── */
+.saving-throws ul,
+.skills ul {
+  list-style: none;
+  padding: 0;
+}
+
+.saving-throws li,
+.skills li {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 1px 0;
+  font-size: 0.78rem;
+}
+
+.dot { font-size: 0.7rem; color: var(--red); min-width: 10px; }
+.sv  { font-weight: 700; min-width: 26px; font-size: 0.75rem; }
+.skill-ability { font-size: 0.65rem; color: #777; margin-left: auto; }
+
+/* ── Passive Perception ────────────────────────────────────────────────────── */
+.passive-perception {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.passive-perception label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--red);
+  font-weight: 600;
+}
+
+.passive-perception .stat-value { font-size: 1.2rem; }
+
+/* ── Prof & Languages ─────────────────────────────────────────────────────── */
+.prof-languages p {
+  font-size: 0.78rem;
+  margin-bottom: 0.2rem;
+}
+
+/* ── Combat: top row ───────────────────────────────────────────────────────── */
+.combat-top {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ── HP block ──────────────────────────────────────────────────────────────── */
+.hp-block { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.hp-max {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.2rem;
+}
+
+.hp-max label, .hp-current label, .hp-temp label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--red);
+  font-weight: 600;
+}
+
+.hp-value { font-size: 1.5rem; font-family: var(--font-head); font-weight: 700; }
+.hp-current, .hp-temp { display: flex; flex-direction: column; }
+
+/* ── Hit Dice / Death Saves ─────────────────────────────────────────────────  */
+.hd-ds-row { display: flex; gap: 0.5rem; }
+.hit-dice   { flex: 1; text-align: center; }
+.hit-dice label { font-size: 0.65rem; text-transform: uppercase; color: var(--red); font-weight: 600; display: block; margin-bottom: 0.2rem; }
+.death-saves { flex: 2; }
+.death-saves label { font-size: 0.65rem; text-transform: uppercase; color: var(--red); font-weight: 600; display: block; margin-bottom: 0.3rem; }
+.ds-row { font-size: 0.72rem; display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.2rem; }
+.ds-box { font-size: 0.85rem; }
+.ds-box.filled { color: var(--gold); }
+.ds-box.failed { color: var(--red); }
+
+/* ── Attacks table ─────────────────────────────────────────────────────────── */
+.attack-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.attack-table th {
+  background: var(--red);
+  color: var(--parchment);
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.attack-table td { padding: 3px 5px; border-bottom: 1px solid var(--border); }
+.attack-table tr:last-child td { border-bottom: none; }
+.attack-table tr:nth-child(even) td { background: rgba(139,105,20,0.07); }
+
+/* ── Personality ───────────────────────────────────────────────────────────── */
+.personality-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.pfield label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.pfield p { font-size: 0.78rem; font-style: italic; }
+
+/* ── Features ──────────────────────────────────────────────────────────────── */
+.feature-list { list-style: none; padding: 0; }
+.feature-list li { font-size: 0.78rem; margin-bottom: 0.35rem; padding-bottom: 0.35rem; border-bottom: 1px solid rgba(139,105,20,0.25); }
+.feature-list li:last-child { border-bottom: none; margin-bottom: 0; }
+
+/* ── Currency & Equipment ──────────────────────────────────────────────────── */
+.currency-row {
+  display: flex;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.coin {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--parchment);
+  border: 1.5px solid var(--border);
+  border-radius: 4px;
+  padding: 3px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.coin label { font-size: 0.55rem; text-transform: uppercase; color: #777; }
+.coin.cp label { color: #8a7a6a; }
+.coin.sp label { color: #888; }
+.coin.ep { border-color: #8a8a8a; }
+.coin.gp label { color: var(--gold); }
+.coin.pp label { color: #9a9aaa; }
+
+.equipment-list { list-style: disc; padding-left: 1.2rem; font-size: 0.78rem; }
+.equipment-list li { margin-bottom: 2px; }
+
+/* ── Spell page ────────────────────────────────────────────────────────────── */
+.spell-page {
+  margin: 1.2rem 1.2rem 0;
+  border-top: 3px double var(--border-dark);
+  padding-top: 1rem;
+}
+
+.spell-page-title {
+  font-family: var(--font-head);
+  color: var(--red);
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+.spell-header {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.spell-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  background: var(--parchment-dark);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  padding: 0.5rem 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.slot-row {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+}
+
+.slot-row label {
+  min-width: 50px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 600;
+}
+
+.slot-box { font-size: 0.9rem; color: var(--border-dark); }
+.slot-box.used { color: var(--red); }
+
+.spell-lists {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.8rem;
+}
+
+.spell-level-block {
+  background: var(--parchment-dark);
+  border: 1.5px solid var(--border);
+  border-radius: 4px;
+  padding: 0.5rem 0.7rem;
+}
+
+.spell-level-block h3 {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--red);
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.2rem;
+}
+
+.spell-level-block ul { list-style: none; padding: 0; }
+.spell-level-block li { font-size: 0.78rem; padding: 1px 0; }
+
+/* ── Print ─────────────────────────────────────────────────────────────────── */
+@media print {
+  body { background: white; }
+  .sheet {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    margin: 0;
+    max-width: 100%;
+  }
+  .spell-page { page-break-before: always; }
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .sheet-body { grid-template-columns: 1fr; }
+  .personality-row { grid-template-columns: 1fr; }
+  .spell-header { flex-wrap: wrap; }
+}
