@@ -29,10 +29,7 @@ jobs:
           r-version: "release"
 
       - name: Install R packages
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages: |
-            cran::yaml
+        run: Rscript -e 'install.packages("yaml", repos = "https://cloud.r-project.org")'
 
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -40,10 +37,12 @@ jobs:
           version: "latest"
 
       - name: Install WeasyPrint
-        run: pip install weasyprint
+        run: |
+          sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0 libharfbuzz0b
+          pip install weasyprint
 
       - name: Render HTML + PDF
-        run: quarto render index.qmd --to html,pdf
+        run: quarto render index.qmd
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
