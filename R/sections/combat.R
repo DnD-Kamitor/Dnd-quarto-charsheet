@@ -31,7 +31,7 @@ render_combat <- function(ch, pb, mod, mod_str) {
 </div>\n',
     ch$hp_max,
     ch$hp_current,
-    if (ch$hp_temp > 0) ch$hp_temp else "—"))
+    if (!is.null(ch$hp_temp) && ch$hp_temp > 0) ch$hp_temp else "—"))
 
   # ── Hit Dice / Death Saves ──────────────────────────────────────────────────
   suc <- ch$death_saves$successes
@@ -62,7 +62,7 @@ render_combat <- function(ch, pb, mod, mod_str) {
   cat('<table class="attack-table">\n')
   cat('<thead><tr><th>Name</th><th>Atk Bonus</th><th>Damage/Type</th></tr></thead>\n')
   cat('<tbody>\n')
-  for (atk in ch$attacks) {
+  for (atk in if (!is.null(ch$attacks)) ch$attacks else list()) {
     cat(sprintf('<tr><td>%s</td><td>%s</td><td>%s %s</td></tr>\n',
       atk$name, atk$bonus, atk$damage, atk$type))
   }

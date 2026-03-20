@@ -82,7 +82,7 @@ render_ability_scores <- function(ch, pb, mod, mod_str) {
   cat('<div class="section-box skills">\n<ul>\n')
   for (key in names(skills_def)) {
     ability <- skills_def[[key]]
-    prof_val <- ch$skills[[key]]
+    prof_val <- if (!is.null(ch$skills)) ch$skills[[key]] else FALSE
     is_exp   <- identical(prof_val, "exp")
     is_prof  <- isTRUE(prof_val) || is_exp
     multiplier <- if (is_exp) 2 else if (is_prof) 1 else 0
