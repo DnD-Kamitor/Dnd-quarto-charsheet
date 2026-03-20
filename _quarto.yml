@@ -1,16 +1,14 @@
 project:
-  type: website
-  output-dir: _site
-
-website:
-  title: "D&D 5e Character Sheet"
-  navbar: false
-  page-footer: false
+  type: default
+  output-dir: _output
 
 format:
   html:
     theme: none
     css: styles/sheet.css
     toc: false
-    page-layout: custom
     self-contained: true
+  pdf:
+    pdf-engine: weasyprint
+    css: styles/sheet.css
+    toc: false

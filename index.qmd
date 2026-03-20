@@ -1,14 +1,5 @@
 ---
-title: "Character Sheet"
-params:
-  character: "character.yml"
-format:
-  html:
-    theme: none
-    css: styles/sheet.css
-    toc: false
-    page-layout: custom
-    self-contained: true
+title: "D&D 5e Character Sheet"
 execute:
   echo: false
   warning: false
@@ -18,20 +9,12 @@ execute:
 library(yaml)
 ch <- yaml.load_file("character.yml")
 
-# Helper: ability modifier
-mod <- function(score) floor((score - 10) / 2)
-mod_str <- function(score) {
-  m <- mod(score)
-  if (m >= 0) paste0("+", m) else as.character(m)
-}
-
-# Proficiency bonus by level
-prof_bonus <- function(level) ceiling(level / 4) + 1
-pb <- prof_bonus(ch$level)
+mod     <- function(score) floor((score - 10) / 2)
+mod_str <- function(score) { m <- mod(score); if (m >= 0) paste0("+", m) else as.character(m) }
+pb      <- ceiling(ch$level / 4) + 1
 ```
 
-```{r sheet-html, results='asis'}
-# Render the full sheet as raw HTML via R
+```{r sheet, results='asis'}
 source("R/render_sheet.R")
 render_sheet(ch, pb, mod, mod_str)
 ```

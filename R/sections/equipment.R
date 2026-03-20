@@ -13,13 +13,6 @@ render_equipment <- function(ch) {
 </div>\n',
     traits, ch$ideals, ch$bonds, ch$flaws))
 
-  # ── Features & Traits ───────────────────────────────────────────────────────
-  cat('<div class="section-box features">\n<ul class="feature-list">\n')
-  for (feat in ch$features) {
-    cat(sprintf('  <li><strong>%s.</strong> %s</li>\n', feat$name, feat$description))
-  }
-  cat('</ul>\n<label class="section-label">Features &amp; Traits</label>\n</div>\n')
-
   # ── Equipment & Currency ────────────────────────────────────────────────────
   cu <- ch$currency
   cat(sprintf('
