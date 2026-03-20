@@ -1,0 +1,146 @@
+# D&D 5e Character Sheet Data
+# Edit this file to fill in your character.
+
+# ── Identity ──────────────────────────────────────────────────────────────────
+name: "Aldric Stonemantle"
+class: "Fighter"
+subclass: "Battle Master"
+level: 5
+race: "Mountain Dwarf"
+background: "Soldier"
+alignment: "Lawful Good"
+experience_points: 6500
+player_name: ""
+
+# ── Ability Scores ────────────────────────────────────────────────────────────
+abilities:
+  str: 18
+  dex: 12
+  con: 16
+  int: 10
+  wis: 13
+  cha: 8
+
+# ── Proficiencies ─────────────────────────────────────────────────────────────
+# true = proficient, "exp" = expertise (double pb), false/omit = not proficient
+saving_throws:
+  str: true
+  dex: false
+  con: true
+  int: false
+  wis: false
+  cha: false
+
+skills:
+  acrobatics: false        # dex
+  animal_handling: false   # wis
+  arcana: false            # int
+  athletics: true          # str
+  deception: false         # cha
+  history: false           # int
+  insight: false           # wis
+  intimidation: true       # cha
+  investigation: false     # int
+  medicine: false          # wis
+  nature: false            # int
+  perception: true         # wis
+  performance: false       # cha
+  persuasion: false        # cha
+  religion: false          # int
+  sleight_of_hand: false   # dex
+  stealth: false           # dex
+  survival: true           # wis
+
+# ── Combat ────────────────────────────────────────────────────────────────────
+armor_class: 18
+speed: 25
+hp_max: 52
+hp_current: 52
+hp_temp: 0
+hit_dice: "5d10"
+inspiration: false
+
+death_saves:
+  successes: 0
+  failures: 0
+
+attacks:
+  - name: "Longsword"
+    bonus: "+7"
+    damage: "1d8+4"
+    type: "slashing"
+  - name: "Hand Crossbow"
+    bonus: "+4"
+    damage: "1d6+1"
+    type: "piercing"
+  - name: "Unarmed Strike"
+    bonus: "+7"
+    damage: "1+4"
+    type: "bludgeoning"
+
+# ── Equipment & Currency ──────────────────────────────────────────────────────
+currency:
+  cp: 0
+  sp: 15
+  ep: 0
+  gp: 47
+  pp: 0
+
+equipment:
+  - "Chain Mail"
+  - "Shield"
+  - "Longsword"
+  - "Hand Crossbow"
+  - "20 Crossbow Bolts"
+  - "Explorer's Pack"
+  - "Insignia of Rank"
+  - "Trophy from fallen enemy"
+  - "Dice set"
+
+# ── Proficiencies & Languages ─────────────────────────────────────────────────
+armor_proficiencies: "All armor, shields"
+weapon_proficiencies: "Simple weapons, martial weapons"
+tool_proficiencies: "Dice set, vehicles (land)"
+languages: "Common, Dwarvish"
+
+# ── Personality ───────────────────────────────────────────────────────────────
+personality_traits:
+  - "I'm always polite and respectful."
+  - "I can stare down a hell hound without flinching."
+ideals: "Responsibility. I do what I must and obey just authority."
+bonds: "I'll never forget the crushing defeat my company suffered or the enemies who dealt it."
+flaws: "I made a terrible mistake in battle that cost many lives, and I would do anything to keep that secret."
+
+# ── Features & Traits ─────────────────────────────────────────────────────────
+features:
+  - name: "Second Wind"
+    description: "Bonus action: regain 1d10+5 HP. Recharges on short/long rest."
+  - name: "Action Surge"
+    description: "Take one additional action on your turn (1/short rest)."
+  - name: "Extra Attack"
+    description: "Attack twice when you take the Attack action."
+  - name: "Combat Superiority"
+    description: "4 superiority dice (d8). Maneuvers: Commander's Strike, Disarming Attack, Precision Attack, Trip Attack."
+  - name: "Know Your Enemy"
+    description: "Spend 1 min studying a creature to learn two of: STR/DEX/CON comparison, AC, HP range, total class levels."
+  - name: "Darkvision"
+    description: "60 ft. darkvision."
+  - name: "Dwarven Resilience"
+    description: "Advantage on saving throws vs. poison; resistance to poison damage."
+  - name: "Stonecunning"
+    description: "Double proficiency on History checks about stonework."
+
+# ── Spellcasting (optional — remove/comment out if non-caster) ────────────────
+# spellcasting:
+#   ability: "int"
+#   spell_save_dc: 13
+#   spell_attack_bonus: "+5"
+#   slots:
+#     1: { total: 4, used: 0 }
+#     2: { total: 3, used: 0 }
+#     3: { total: 2, used: 0 }
+#   spells:
+#     cantrips: ["Fire Bolt", "Mage Hand", "Prestidigitation"]
+#     level_1: ["Magic Missile", "Shield", "Detect Magic"]
+#     level_2: ["Misty Step", "Scorching Ray"]
+#     level_3: ["Fireball", "Counterspell"]
