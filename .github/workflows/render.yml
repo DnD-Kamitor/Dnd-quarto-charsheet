@@ -29,7 +29,7 @@ jobs:
           r-version: "release"
 
       - name: Install R packages
-        run: Rscript -e 'install.packages("yaml", repos = "https://cloud.r-project.org")'
+        run: Rscript -e 'install.packages(c("yaml", "knitr", "rmarkdown"), repos = "https://cloud.r-project.org")'
 
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
