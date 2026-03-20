@@ -413,7 +413,7 @@ body {
 .slot-box { font-size: 0.8rem; color: var(--border-dark); }
 .slot-box.used { color: var(--red); }
 
-.spell-lists { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.5rem; }
+.spell-lists { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
 
 .spell-level-block {
   background: var(--parchment-dark);
