@@ -1,0 +1,16 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "D&D 5e Character Sheet"
+  navbar: false
+  page-footer: false
+
+format:
+  html:
+    theme: none
+    css: styles/sheet.css
+    toc: false
+    page-layout: custom
+    self-contained: true

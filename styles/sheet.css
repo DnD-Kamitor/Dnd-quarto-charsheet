@@ -1,0 +1,4 @@
+/* D&D 5e Character Sheet — styles filled in task #7 */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: serif; background: #f4f0e8; }
+.sheet { max-width: 1100px; margin: 0 auto; padding: 1rem; }
